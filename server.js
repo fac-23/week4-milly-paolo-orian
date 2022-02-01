@@ -1,5 +1,4 @@
 // require express server
-const { request, response } = require("express");
 const express = require("express");
 const server = express();
 
@@ -14,11 +13,12 @@ server.use(staticHandler);
 
 // cookie parser
 const cookieParser = require("cookie-parser");
+// eslint-disable-next-line no-undef
 server.use(cookieParser(process.env.COOKIE_SECRET));
 
 // create home route with basic html template
 server.get("/", (request, response) => {
-	const html = `
+  const html = `
     <!DOCTYPE html>
      <html lang="en">
       <head>
@@ -33,12 +33,13 @@ server.get("/", (request, response) => {
       </body>
       </html>`;
 
-	response.send(html);
+  response.send(html);
 });
 
 // assign port to deployed or local port
+// eslint-disable-next-line no-undef
 const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
-	console.log(`http://localhost:${PORT}`);
+  console.log(`http://localhost:${PORT}`);
 });

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const { execFileSync } = require("child_process");
 
 module.exports = (on, config) => {
