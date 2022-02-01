@@ -21,10 +21,10 @@ server.use(cookieParser(process.env.COOKIE_SECRET));
 const home = require("./routes/home.js");
 const signUp = require("./routes/signUp.js");
 const logIn = require("./routes/logIn.js");
-const logOut = require("./routes/logOut.js");
+// const logOut = require("./routes/logOut.js");
 const profile = require("./routes/profile.js");
-const addPost = require("./routes/addPost.js");
-const newsFeed = require("./routes/newsFeed.js");
+// const addPost = require("./routes/addPost.js");
+// const newsFeed = require("./routes/newsFeed.js");
 
 
 
@@ -32,31 +32,31 @@ const newsFeed = require("./routes/newsFeed.js");
 // Display sign up and log in links
 server.get("/", home.get);
 
-// Sign Up //
-// Display sign up form
+// // Sign Up //
+// // Display sign up form
 server.get("/sign-up", signUp.get);
-// Create user and create session in database
-server.post("/sign-up", signUp.post);
+// // Create user and create session in database
+// server.post("/sign-up", signUp.post);
 
-// Log In //
-// Display form to log in
+// // Log In //
+// // Display form to log in
 server.get("/log-in", logIn.get);
-// Retrieve session and user from database
-server.post("/log-in", logIn.post);
+// // Retrieve session and user from database
+// server.post("/log-in", logIn.post);
 
-// Log Out //
-// Delete cookie and session from database
-server.get("/log-out", logOut.get);
+// // Log Out //
+// // Delete cookie and session from database
+// server.get("/log-out", logOut.get);
 
-// Profile // 
-// serve profile page with form
+// // Profile // 
+// // serve profile page with form
 server.get("/profile", profile.get);
-// Process user input into database and redirect to newsfeed
-server.post("/add-post", addPost.post);
+// // Process user input into database and redirect to newsfeed
+// server.post("/add-post", addPost.post);
 
-// Newsfeed //
-// Gets all the posts from database and displays them
-server.get("/news-feed", newsFeed.get);
+// // Newsfeed //
+// // Gets all the posts from database and displays them
+// server.get("/news-feed", newsFeed.get);
 
 
 
