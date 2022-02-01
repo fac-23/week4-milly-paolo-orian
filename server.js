@@ -24,7 +24,7 @@ const logIn = require("./routes/logIn.js");
 // const logOut = require("./routes/logOut.js");
 const profile = require("./routes/profile.js");
 // const addPost = require("./routes/addPost.js");
-// const newsFeed = require("./routes/newsFeed.js");
+const newsFeed = require("./routes/newsFeed.js");
 
 
 
@@ -56,7 +56,7 @@ server.get("/profile", profile.get);
 
 // // Newsfeed //
 // // Gets all the posts from database and displays them
-// server.get("/news-feed", newsFeed.get);
+server.get("/news-feed", newsFeed.get);
 
 
 
