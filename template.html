@@ -1,0 +1,117 @@
+<!-- HOMEPAGE -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pets App</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Pet App</h1>
+        <img class="logo" src="#" alt="Pets App Logo">
+    <div class="links">  
+        <a href="/signUp" aria-label="Click this link to sign up">Sign Up</a>
+    <a href="/logIn" aria-label="Click this link to log in">Log in</a>
+    </div> 
+    </div>
+</body>
+</html>
+
+<!-- SIGN UP -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pets App Sign Up</title>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <h1>Pet App Sign Up</h1>
+    <div class="links">  
+    <a href="/" aria-label="Return to Home Page">Return to Home Page</a>
+    </div>
+
+    <form method="POST" action="/sign-up">
+    <label for="username">Username</label>
+    <input name="username" id="username" type="text" aria-label="Enter your username">
+    <label for="email">Email</label>
+    <input name="email" id="email" type="email" aria-label="Enter your email">
+    <label for="password">Password</label>
+    <input name="password" id="password" type="password" aria-label="Enter your password">
+    <button type="submit" aria-label="Click button to Submit">Submit</button>
+    </form>
+    </div>
+</body>
+</html>
+
+<!-- LOG IN -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pets App Log In</title>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <h1>Pet App Log In</h1>
+    <div class="links">  
+    <a href="/" aria-label="Return to Home Page">Return to Home Page</a>
+    </div>
+
+    <form method="POST" action="/log-in">
+    <label for="email">Email</label>
+    <input name="email" id="email" type="email" aria-label="Enter your email">
+    <label for="password">Password</label>
+    <input name="password" id="password" type="password" aria-label="Enter your password">
+    <button type="submit" aria-label="Click button to Submit">Submit</button>
+    </form>
+    </div>
+</body>
+</html>
+
+<!-- PROFILE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pets App Profile</title>
+</head>
+<body>
+    
+    <div class="wrapper">
+        <h1>Hello email</h1>
+    <div class="links">  
+    <a href="/" aria-label="Return to Home Page">Return to Home Page</a>
+    
+    <form method="POST" action="/log-out">
+        <button type="submit">Log Out</button>
+    </form>
+    </div>
+
+    <form enctype="multipart/form-data" method="POST" action="/add-post">
+    <label for="caption">Caption your pet</label>
+    <input name="caption" id="caption" type="text" aria-label="Caption your Pet">
+    <label for="image">Post Image of your pet</label>
+    <input name="image" id="image" type="file" aria-label="Post image of your pet">
+    <button type="submit" aria-label="Click button to Submit">Submit</button>
+    </form>
+    </div>
+</body>
+</html>
