@@ -1,5 +1,7 @@
 const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
+const bcryptjs = require("bcryptjs");
+const model = require("./database/model.js");
 
 // cookie attribute object to pass when assigning cookies
 const COOKIE_OPTIONS = {
@@ -15,4 +17,21 @@ const COOKIE_OPTIONS = {
     // secure: true
   };
 
-  module.exports = { COOKIE_OPTIONS }
+
+
+
+// SIGNING UP //
+
+function createUser( username, email, password ) {
+  return bcrypt.hash(password, 10).then((hashedPassword) => {
+    return model.createUserDb( username, email, hashedPassword );
+  })
+}
+
+
+
+
+
+
+
+  module.exports = { COOKIE_OPTIONS, createUser }
