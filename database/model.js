@@ -30,11 +30,22 @@ function getSession(sid) {
 
   return db.query(SELECT_SESSION, [sid]).then((result) => {
     // console.log("model.getSession", result.rows[0].data);
-    console.log("result.rows[0]", result.rows[0]);
+    // console.log("result.rows[0]", result.rows[0]);
 
     return result.rows[0] && result.rows[0].data;
     // model.getSession { userObj: { id: 6, username: 'cat', email: 'cat@pot' } }
   });
 }
 
-module.exports = { createUserDb, createSession, getSession };
+// LOGGING IN //
+
+// getUser function
+// get user from db based on email
+function getUser(email) {
+  const SELECT_USER = `SELECT id, username, email, password FROM users WHERE email = $1`;
+  return db.query(SELECT_USER, [email]).then((result) => {
+    return result.rows[0];
+  });
+}
+
+module.exports = { createUserDb, createSession, getSession, getUser };
