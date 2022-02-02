@@ -17,7 +17,15 @@ const cookieParser = require("cookie-parser");
 server.use(cookieParser(process.env.COOKIE_SECRET));
 
 
+// MIDDLEWARE //
+
+// If it finds the session it will attach the userObj data to a new "session" property of the request object
+const getSession = require("./middleware/getSession.js");
+
+server.use(getSession);
+
 // ROUTES //
+
 const home = require("./routes/home.js");
 const signUp = require("./routes/signUp.js");
 const logIn = require("./routes/logIn.js");

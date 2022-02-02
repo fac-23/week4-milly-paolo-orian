@@ -46,6 +46,8 @@ function post(req, res) {
     .then(userObj => auth.saveUserSession(userObj))
     .then((sid) => {
       res.cookie('sid', sid, auth.COOKIE_OPTIONS);
+      // console.log("req.session", req.session);
+      // req.session { userObj: { id: 5, username: 'peach', email: 'peach@nintendo' } }
       res.redirect("/profile");
     })
     .catch((error) => { 

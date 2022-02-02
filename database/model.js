@@ -26,5 +26,17 @@ function createSession(sid, userObj) {
 }
 
 
+// Takes an sid and selects the userObj data from the sessions table.
+function getSession(sid) {
+  const SELECT_SESSION = `SELECT data FROM sessions WHERE sid = $1`;
+ 
+  return db.query(SELECT_SESSION, [sid])
+    .then((result) => {
+      // console.log("model.getSession", result.rows[0].data);
+      return result.rows[0].data;
+      // model.getSession { userObj: { id: 6, username: 'cat', email: 'cat@pot' } }
+    })
+}
 
-module.exports = { createUserDb, createSession }
+
+module.exports = { createUserDb, createSession, getSession }
