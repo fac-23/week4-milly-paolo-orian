@@ -1,8 +1,7 @@
 const auth = require("../auth.js");
 
-
-function get (req, res) {
-    const html = `<!DOCTYPE html>
+function get(req, res) {
+  const html = `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -30,36 +29,35 @@ function get (req, res) {
         </form>
         </div>
     </body>
-    </html>`
-    res.send(html);
+    </html>`;
+  res.send(html);
 }
 
 // create user and create session in database
 
-function post(req, res) {
-
+function post(req, res, next) {
   // get data from request body
   const { username, email, password } = req.body;
 
   // call auth.createUser to hash password
-  auth.createUser( username, email, password )
-    .then(userObj => auth.saveUserSession(userObj))
+  auth
+    .createUser(username, email, password)
+    .then((userObj) => auth.saveUserSession(userObj))
     .then((sid) => {
-      res.cookie('sid', sid, auth.COOKIE_OPTIONS);
+      res.cookie("sid", sid, auth.COOKIE_OPTIONS);
       // console.log("req.session", req.session);
       // req.session { userObj: { id: 5, username: 'peach', email: 'peach@nintendo' } }
       res.redirect("/profile");
     })
-    .catch((error) => { 
-      console.error(error);  
-      // next(error);
-    })
+    .catch((error) => {
+      console.error(error);
+      next(error);
+    });
   // then we get the user object and we create and save the session inside sessions table, returning sid
 
   // Create cookie with sid
 
   // Catch for errors
-
 }
 
-module.exports = {get, post}
+module.exports = { get, post };
