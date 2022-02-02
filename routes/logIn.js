@@ -1,7 +1,7 @@
+const auth = require("../auth.js");
 
-
-function get (req,res) {
-    const html = `<!DOCTYPE html>
+function get(req, res) {
+  const html = `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -27,8 +27,31 @@ function get (req,res) {
         </form>
         </div>
     </body>
-    </html>`
-    res.send(html)
+    </html>`;
+  res.send(html);
 }
 
-module.exports = {get}
+// call auth.verifyUser function, return user obj without password
+// this calls model.getUser to find the user in the db by their email and return the user object
+// hash the password the user inserted and compare with the stored one (bcrypt.compare)
+// assign a cookie with the sid
+// redirect to profile
+// catch block that calls next(error)
+
+function post(req, res, next) {
+  const { email, password } = req.body;
+
+  auth
+    .verifyUser(email, password)
+    .then((userObj) => auth.saveUserSession(userObj))
+    .then((sid) => {
+      res.cookie("sid", sid, auth.COOKIE_OPTIONS);
+      res.redirect("/profile");
+    })
+    .catch((error) => {
+      console.error(error);
+      next(error);
+    });
+}
+
+module.exports = { get, post };
