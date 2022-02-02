@@ -16,13 +16,15 @@ const cookieParser = require("cookie-parser");
 // eslint-disable-next-line no-undef
 server.use(cookieParser(process.env.COOKIE_SECRET));
 
-
 // MIDDLEWARE //
 
 // If it finds the session it will attach the userObj data to a new "session" property of the request object
 const getSession = require("./middleware/getSession.js");
+const checkAuth = require("./middleware/checkAuth.js");
 
 server.use(getSession);
+
+//
 
 // ROUTES //
 
@@ -33,8 +35,6 @@ const logIn = require("./routes/logIn.js");
 const profile = require("./routes/profile.js");
 // const addPost = require("./routes/addPost.js");
 const newsFeed = require("./routes/newsFeed.js");
-
-
 
 // Home //
 // Display sign up and log in links
@@ -56,17 +56,15 @@ server.get("/log-in", logIn.get);
 // // Delete cookie and session from database
 // server.get("/log-out", logOut.get);
 
-// // Profile // 
+// // Profile //
 // // serve profile page with form
-server.get("/profile", profile.get);
+server.get("/profile", checkAuth, profile.get);
 // // Process user input into database and redirect to newsfeed
-// server.post("/add-post", addPost.post);
+// server.post("/add-post", checkAuth, addPost.post);
 
 // // Newsfeed //
 // // Gets all the posts from database and displays them
-server.get("/news-feed", newsFeed.get);
-
-
+server.get("/news-feed", checkAuth, newsFeed.get);
 
 // assign port to deployed or local port
 // eslint-disable-next-line no-undef
