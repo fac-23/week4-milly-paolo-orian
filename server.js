@@ -50,7 +50,7 @@ server.post("/sign-up", signUp.post);
 // // Display form to log in
 server.get("/log-in", logIn.get);
 // // Retrieve session and user from database
-// server.post("/log-in", logIn.post);
+server.post("/log-in", logIn.post);
 
 // // Log Out //
 // // Delete cookie and session from database
