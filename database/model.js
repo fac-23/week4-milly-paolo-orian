@@ -55,10 +55,35 @@ function deleteSession(sid) {
   return db.query(DELETE_SESSION, [sid]);
 }
 
+// CREATE POST //
+function createPost(caption, img, id) {
+  const INSERT_POST = `INSERT INTO posts (caption, img, user_id) VALUES ($1, $2, $3)`;
+  return db.query(INSERT_POST, [caption, img, id]);
+}
+
+// GET POSTS //
+function getPosts() {
+  const SELECT_POSTS = `SELECT * FROM posts`;
+  return db.query(SELECT_POSTS).then((result) => {
+    // console.log(result.rows);
+    return result.rows;
+  });
+}
+
+// GET IMG //
+function getImg(id) {
+  return db.query("SELECT img FROM posts WHERE id=$1", [id]).then((result) => {
+    return result.rows[0];
+  });
+}
+
 module.exports = {
   createUserDb,
   createSession,
   getSession,
   getUser,
   deleteSession,
+  createPost,
+  getPosts,
+  getImg,
 };

@@ -1,7 +1,10 @@
+// const model = require("../database/model.js");
 
+// const req = require("express/lib/request");
 
-function get (req, res) {
-    const html = `<!DOCTYPE html>
+function get(req, res) {
+  const user = req.session;
+  const html = `<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -13,7 +16,7 @@ function get (req, res) {
     <body>
         
         <div class="wrapper">
-            <h1>Hello email</h1>
+            <h1>Hello ${user.userObj.username}</h1>
         <div class="links">  
         <a href="/" aria-label="Return to Home Page">Return to Home Page</a>
         
@@ -31,8 +34,26 @@ function get (req, res) {
         </form>
         </div>
     </body>
-    </html>`
-    res.send(html)
+    </html>`;
+  res.send(html);
 }
 
-module.exports = {get}
+
+
+// function post("/news-feed", imgUpload.single("image"), (req, res, next)){
+//   // get user inputs from req.body
+//   const { caption, img } = req.body;
+//   const userId = req.session.userObj.id;
+//   //  insert caption and img into DB posts table
+//   return model
+//     .createPost(caption, img, userId)
+//     .then(() => {
+//       res.redirect("/news-feed");
+//     })
+//     .catch((error) => {
+//         console.error(error);
+//         next(error);
+//     });
+// }
+
+module.exports = { get };
