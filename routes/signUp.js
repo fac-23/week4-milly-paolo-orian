@@ -44,6 +44,14 @@ function post(req, res) {
   // call auth.createUser to hash password
   auth.createUser( username, email, password )
     .then(userObj => auth.saveUserSession(userObj))
+    .then((sid) => {
+      res.cookie('sid', sid, auth.COOKIE_OPTIONS);
+      res.redirect("/profile");
+    })
+    .catch((error) => { 
+      console.error(error);  
+      // next(error);
+    })
   // then we get the user object and we create and save the session inside sessions table, returning sid
 
   // Create cookie with sid

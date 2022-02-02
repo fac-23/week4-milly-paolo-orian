@@ -36,7 +36,7 @@ server.get("/", home.get);
 // // Display sign up form
 server.get("/sign-up", signUp.get);
 // // Create user and create session in database
-// server.post("/sign-up", signUp.post);
+server.post("/sign-up", signUp.post);
 
 // // Log In //
 // // Display form to log in
