@@ -1,5 +1,6 @@
 const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
+const model = require("./database/model.js");
 
 // cookie attribute object to pass when assigning cookies
 const COOKIE_OPTIONS = {
@@ -15,4 +16,28 @@ const COOKIE_OPTIONS = {
     // secure: true
   };
 
-  module.exports = { COOKIE_OPTIONS }
+
+
+
+// SIGNING UP //
+
+// Hash the password and insert user into database and returns user object with id, email and username
+function createUser( username, email, password ) {
+  return bcrypt.hash(password, 10).then((hashedPassword) => {
+    return model.createUserDb( username, email, hashedPassword );
+  })
+}
+
+// Create sid and insert session into database, returns the sid
+function saveUserSession(userObj) {
+  const sid = crypto.randomBytes(18).toString("base64");
+  // console.log(userObj);
+  return model.createSession(sid, { userObj });
+}
+
+
+
+
+
+
+  module.exports = { COOKIE_OPTIONS, createUser, saveUserSession }
