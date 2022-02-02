@@ -31,7 +31,7 @@ server.use(handleErrors);
 const home = require("./routes/home.js");
 const signUp = require("./routes/signUp.js");
 const logIn = require("./routes/logIn.js");
-// const logOut = require("./routes/logOut.js");
+const logOut = require("./routes/logOut.js");
 const profile = require("./routes/profile.js");
 // const addPost = require("./routes/addPost.js");
 const newsFeed = require("./routes/newsFeed.js");
@@ -54,7 +54,7 @@ server.post("/log-in", logIn.post);
 
 // // Log Out //
 // // Delete cookie and session from database
-// server.get("/log-out", logOut.get);
+server.post("/log-out", logOut.post);
 
 // // Profile //
 // // serve profile page with form
