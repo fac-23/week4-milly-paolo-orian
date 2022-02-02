@@ -1,5 +1,3 @@
-
-
 function get (req,res) {
     const html = `<!DOCTYPE html>
     <html lang="en">
@@ -31,4 +29,20 @@ function get (req,res) {
     res.send(html)
 }
 
-module.exports = {get}
+function post (req, res) {
+    // destructure the email and password from req.body
+    const { email, password } = req.body;
+    console.log(email, password);
+    // call auth.verifyUser function 
+    // this calls model.getUser to find the user in the db by their email and return the user object
+    // hash the password the user inserted and compare with the stored one (bcrypt.compare)
+    // if not match, send an error
+    // if ther is a match, call auth.saveUserSession to create a session in the db and return the sid
+    // assign a cookie with the sid
+    // redirect to profile
+    // catch block that calls next(error)
+    res.send('Hello');
+
+}
+
+module.exports = {get, post}
