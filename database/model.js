@@ -48,4 +48,17 @@ function getUser(email) {
   });
 }
 
-module.exports = { createUserDb, createSession, getSession, getUser };
+// LOGGING OUT //
+
+function deleteSession(sid) {
+  const DELETE_SESSION = `DELETE FROM sessions WHERE sid=$1`;
+  return db.query(DELETE_SESSION, [sid]);
+}
+
+module.exports = {
+  createUserDb,
+  createSession,
+  getSession,
+  getUser,
+  deleteSession,
+};
