@@ -23,6 +23,7 @@ body {
 .wrapper {
   margin: 5rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
@@ -111,4 +112,14 @@ ul {
 li {
   list-style-type: none;
   margin: 3rem;
+  text-align: center;
+}
+
+li > * {
+  padding: 1rem;
+}
+
+#post-img {
+  max-width: 70%;
+  margin: 0 auto;
 }
