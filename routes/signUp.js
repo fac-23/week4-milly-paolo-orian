@@ -58,7 +58,7 @@ function post(req, res, next) {
   );
 
   const [username, email, password] = sanitisedInputs;
-  console.log("sanitized?", username, email, password);
+  
   // call auth.createUser to hash password
   // get the user object, create and save the session inside sessions table, returning sid
   // Create cookie with sid

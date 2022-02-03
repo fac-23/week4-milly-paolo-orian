@@ -9,7 +9,7 @@ function post(req, res, next) {
   const [caption] = sanitisedInputs;
 
   const img = req.file;
-  console.log("req.file", img);
+  // console.log("req.file", img);
   const userId = req.session.userObj.id;
   //  insert caption and img into DB posts table
   return model
