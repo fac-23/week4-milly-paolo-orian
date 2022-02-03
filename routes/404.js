@@ -12,7 +12,7 @@ function sendError(req, res) {
     
     <div class="wrapper">
     
-      <h1>There was an error, please head back to home page</h1>
+      <h1>Page not found</h1>
       <a href="/">Back to home</a>
 
     </div>

@@ -5,6 +5,8 @@ beforeEach(() => {
 
 // Wrap tests in a describe to run together
 
+// HOME PAGE //
+
 describe("homepage tests", () => {
   it("can find homepage", () => {
     cy.visit("/");
@@ -38,3 +40,67 @@ describe("check homepage links", () => {
     cy.url().should("include", "/log-in");
   });
 });
+
+// SIGN UP PAGE //
+
+describe("Sign Up pages tests", () => {
+  it("Should be able to sign up a user and set a cookie", () => {
+    cy.visit("/sign-up");
+
+    cy.clearCookie("sid");
+
+    cy.getCookie("sid").should("not.exist");
+
+    cy.get("form").find("input[type='text']").type("Mario");
+    cy.get("form").find("input[type='email']").type("mario@nintendo");
+    cy.get("form").find("input[type='password']").type("iammario");
+
+    cy.get("button").click();
+
+    cy.getCookie("sid").should("exist");
+  });
+});
+
+// LOG IN PAGE //
+
+describe("Log in page tests", () => {
+  it("Can Log in a user", () => {
+    cy.visit("/sign-up");
+
+    cy.clearCookie("sid");
+
+    cy.getCookie("sid").should("not.exist");
+
+    cy.get("form").find("input[type='text']").type("Mario");
+    cy.get("form").find("input[type='email']").type("mario@nintendo");
+    cy.get("form").find("input[type='password']").type("iammario");
+
+    cy.get("button").click();
+
+    cy.visit("/profile");
+    cy.get('button:contains("Log Out")').click();
+    // cy.get("button").contains("Log Out").click();
+
+    // cy.visit("/login");
+
+    // cy.get("a");
+
+    // cy.getCookie("sid").should("exist");
+  });
+});
+
+// PROFILE PAGE //
+
+// Should redirect to home if not logged in
+
+// describe("Profile page tests", () => {
+//   it("Should not display content if not logged in", () => {
+
+//     // checks if we get 401: Unauthorized in the body of the response
+//     cy.intercept("GET", "/profile", (req, res) => {
+//       expect(res.body).to.include("401: Unauthorized");
+//     });
+
+//     cy.get("h1").contains("You must log in to view this content!");
+//   });
+// });
