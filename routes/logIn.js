@@ -38,7 +38,7 @@ function get(req, res) {
 // redirect to profile
 // catch block that calls next(error)
 
-function post(req, res, next) {
+function post(req, res) {
   const { email, password } = req.body;
 
   auth
@@ -50,7 +50,11 @@ function post(req, res, next) {
     })
     .catch((error) => {
       console.error(error);
-      next(error);
+      const userNotFound = `
+      <h1>User not found. Have you signed up?</h1>
+      <a href="/">Sign up</a>
+      `;
+      res.send(userNotFound);
     });
 }
 

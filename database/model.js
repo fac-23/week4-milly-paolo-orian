@@ -73,6 +73,7 @@ function getPosts() {
 // GET IMG //
 function getImg(id) {
   return db.query("SELECT img FROM posts WHERE id=$1", [id]).then((result) => {
+    console.log("model.getImg", result.rows[0]);
     return result.rows[0];
   });
 }

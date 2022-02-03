@@ -1,5 +1,26 @@
-function get(req, res) {
-  const html = `
+const model = require("../database/model.js");
+
+function get(req, res, next) {
+  const user = req.session;
+  model.getPosts().then((result) => {
+    // create array of posts
+    const posts = result
+      .map((post) => {
+        return `<li>
+      <p>${user.userObj.username}</p>
+      <p>${post.caption}</p>
+      
+      ${
+        post.img
+          ? `<img src="/post/${post.id}/img" alt="${post.caption}" width="64" height="64">`
+          : ""
+      }
+      </li>`;
+      })
+      .reverse()
+      .join("");
+
+    const html = `
     <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,12 +39,17 @@ function get(req, res) {
       </div>
       
       <ul>
-
+    ${posts}
       </ul>
     </div>
   </body>
 </html>`;
-  res.send(html);
+
+    res.send(html);
+  }).catch((error) => {
+    console.error(error);
+    next(error);
+  });
 }
 
 module.exports = { get };

@@ -1,7 +1,3 @@
-// const model = require("../database/model.js");
-
-// const req = require("express/lib/request");
-
 function get(req, res) {
   const user = req.session;
   const html = `<!DOCTYPE html>
@@ -40,21 +36,5 @@ function get(req, res) {
     </html>`;
   res.send(html);
 }
-
-// function post("/news-feed", imgUpload.single("image"), (req, res, next)){
-//   // get user inputs from req.body
-//   const { caption, img } = req.body;
-//   const userId = req.session.userObj.id;
-//   //  insert caption and img into DB posts table
-//   return model
-//     .createPost(caption, img, userId)
-//     .then(() => {
-//       res.redirect("/news-feed");
-//     })
-//     .catch((error) => {
-//         console.error(error);
-//         next(error);
-//     });
-// }
 
 module.exports = { get };
