@@ -35,6 +35,7 @@ const logOut = require("./routes/logOut.js");
 const profile = require("./routes/profile.js");
 // const addPost = require("./routes/addPost.js");
 // const newsFeed = require("./routes/newsFeed.js");
+const sendError = require("./routes/404.js");
 
 // Home //
 // Display sign up and log in links
@@ -142,10 +143,13 @@ server.get("/news-feed", (req, res) => {
 });
 
 server.get("/post/:id/img", (req, res) => {
+  console.log("params", req.params);
   model.getImg(req.params.id).then((user) => {
     res.send(user.img);
   });
 });
+
+server.use(sendError.sendError);
 
 // assign port to deployed or local port
 // eslint-disable-next-line no-undef
