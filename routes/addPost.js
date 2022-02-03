@@ -1,8 +1,15 @@
 const model = require("../database/model.js");
+const helpers = require("../helpers.js");
 
 function post(req, res, next) {
   // get user inputs from req.body
-  const { caption } = req.body;
+
+  const sanitisedInputs = helpers.sanitise(req.body.caption);
+
+  const [caption] = sanitisedInputs;
+
+  //<script>console.log("Hacked!)</script>
+
   const img = req.file;
   console.log("req.file", img);
   const userId = req.session.userObj.id;
@@ -18,4 +25,4 @@ function post(req, res, next) {
     });
 }
 
-module.exports = { post }
+module.exports = { post };

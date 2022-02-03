@@ -1,4 +1,5 @@
 const auth = require("../auth.js");
+const helpers = require("../helpers.js");
 
 function get(req, res) {
   const html = `<!DOCTYPE html>
@@ -37,8 +38,16 @@ function get(req, res) {
 
 function post(req, res, next) {
   // get data from request body
-  const { username, email, password } = req.body;
+  // const { username, email, password } = req.body;
 
+  let sanitisedInputs = helpers.sanitise(
+    req.body.username,
+    req.body.email,
+    req.body.password
+  );
+
+  const [username, email, password] = sanitisedInputs;
+  console.log("sanitized?", username, email, password);
   // call auth.createUser to hash password
   // get the user object, create and save the session inside sessions table, returning sid
   // Create cookie with sid
