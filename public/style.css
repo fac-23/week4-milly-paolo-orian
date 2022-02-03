@@ -59,6 +59,11 @@ a {
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+}
+
 form[action="/add-post"] {
   margin: 3rem;
   display: flex;
@@ -84,9 +89,13 @@ input .caption {
   border-radius: 5px;
 }
 
+input[aria-invalid="true"] {
+  border-color: hsl(340, 70%, 50%);
+}
+
 label {
   color: rgb(5, 8, 10);
-  padding: 2rem;
+  padding: 2rem 2rem 2rem 0;
 }
 
 button {
@@ -122,4 +131,13 @@ li > * {
 #post-img {
   max-width: 70%;
   margin: 0 auto;
+}
+
+.error {
+  color: hsl(340, 70%, 50%);
+  padding-top: 1rem;
+}
+
+.requirements {
+  padding-bottom: 1rem;
 }
