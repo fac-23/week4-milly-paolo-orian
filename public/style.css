@@ -1,3 +1,114 @@
+@import url("https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(237, 211, 121);
+  background: linear-gradient(
+    0deg,
+    rgba(237, 211, 121, 1) 17%,
+    rgba(241, 131, 116, 1) 77%
+  );
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100vw;
+  min-height: 100vh;
+  font-family: "Crete Round", serif;
+}
+
+.wrapper {
+  margin: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 h1 {
-    color: palevioletred;
+  display: none;
+}
+
+.logo {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("Petarazzi.png");
+  border-radius: 10%;
+  width: 25%;
+  height: auto;
+}
+.links {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+a {
+  border: 3px solid rgb(127, 135, 247);
+  background-color: rgb(167, 218, 231);
+  text-decoration: none;
+  border-radius: 30px;
+  border: transparent;
+  padding: 1rem;
+  text-align: center;
+  margin: 4rem;
+  width: 10em;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+form[action="/add-post"] {
+  margin: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+form input {
+  border: 3px solid rgb(117, 216, 133);
+  background-color: rgb(153, 153, 218);
+  border-radius: 5px;
+  outline: none;
+  padding: 10px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 15px 10px -15px;
+}
+
+form input:focus {
+  border: 1px solid rgb(28, 28, 48);
+  border-radius: 5px;
+}
+
+input .caption {
+  border: 1px solid rgb(28, 28, 48);
+  border-radius: 5px;
+}
+
+label {
+  color: rgb(5, 8, 10);
+  padding: 2rem;
+}
+
+button {
+  border: transparent;
+  background-color: rgb(127, 127, 206);
+  padding: 10px;
+  margin: 2rem;
+  border-radius: 10px;
+  color: rgb(53, 43, 80);
+  font-family: inherit;
+  font-size: inherit;
+  transition: background-color 400ms ease-in-out;
+}
+
+button:hover {
+  background-color: white;
+}
+
+ul {
+  margin: 0 auto;
+}
+
+li {
+  list-style-type: none;
+  margin: 3rem;
 }
