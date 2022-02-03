@@ -1,4 +1,5 @@
 const auth = require("../auth.js");
+const helpers = require("../helpers.js");
 
 function get(req, res) {
   const html = `<!DOCTYPE html>
@@ -39,7 +40,9 @@ function get(req, res) {
 // catch block that calls next(error)
 
 function post(req, res) {
-  const { email, password } = req.body;
+  const sanitisedInputs = helpers.sanitise(req.body.email, req.body.password);
+
+  const [email, password] = sanitisedInputs;
 
   auth
     .verifyUser(email, password)
