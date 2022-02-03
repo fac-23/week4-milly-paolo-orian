@@ -40,6 +40,8 @@ function post(req, res, next) {
   const { username, email, password } = req.body;
 
   // call auth.createUser to hash password
+  // get the user object, create and save the session inside sessions table, returning sid
+  // Create cookie with sid
   auth
     .createUser(username, email, password)
     .then((userObj) => auth.saveUserSession(userObj))
@@ -51,13 +53,9 @@ function post(req, res, next) {
     })
     .catch((error) => {
       console.error(error);
+      // pass error to handleErrors middleware
       next(error);
     });
-  // then we get the user object and we create and save the session inside sessions table, returning sid
-
-  // Create cookie with sid
-
-  // Catch for errors
 }
 
 module.exports = { get, post };

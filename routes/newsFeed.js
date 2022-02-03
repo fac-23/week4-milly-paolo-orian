@@ -1,6 +1,6 @@
 const model = require("../database/model.js");
 
-function get(req, res) {
+function get(req, res, next) {
   const user = req.session;
   model.getPosts().then((result) => {
     // create array of posts
@@ -46,6 +46,9 @@ function get(req, res) {
 </html>`;
 
     res.send(html);
+  }).catch((error) => {
+    console.error(error);
+    next(error);
   });
 }
 
