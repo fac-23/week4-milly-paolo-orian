@@ -26,10 +26,13 @@ function get(req, res) {
         </div>
     
         <form enctype="multipart/form-data" method="POST" action="/add-post">
+
         <label for="caption">Caption your pet</label>
         <input name="caption" id="caption" type="text" aria-label="Caption your Pet">
+
         <label for="image">Post Image of your pet</label>
         <input name="image" id="image" type="file" aria-label="Post image of your pet">
+        
         <button type="submit" aria-label="Click button to Submit">Submit</button>
         </form>
         </div>
@@ -37,8 +40,6 @@ function get(req, res) {
     </html>`;
   res.send(html);
 }
-
-
 
 // function post("/news-feed", imgUpload.single("image"), (req, res, next)){
 //   // get user inputs from req.body
