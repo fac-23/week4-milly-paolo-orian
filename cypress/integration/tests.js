@@ -93,14 +93,13 @@ describe("Log in page tests", () => {
 
 // Should redirect to home if not logged in
 
-// describe("Profile page tests", () => {
-//   it("Should not display content if not logged in", () => {
+describe("Profile page tests", () => {
+  it("Should not display content if not logged in", () => {
+    // checks if we get 401: Unauthorized in the body of the response
+    cy.intercept("GET", "/profile", (req, res) => {
+      expect(res.body).to.include("401: Unauthorized");
+    });
 
-//     // checks if we get 401: Unauthorized in the body of the response
-//     cy.intercept("GET", "/profile", (req, res) => {
-//       expect(res.body).to.include("401: Unauthorized");
-//     });
-
-//     cy.get("h1").contains("You must log in to view this content!");
-//   });
-// });
+    cy.get("h1").contains("You must log in to view this content!");
+  });
+});
