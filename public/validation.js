@@ -30,5 +30,3 @@ inputElements.forEach((input) => {
     errorDiv.textContent = "";
   });
 });
-
-console.log(form);
