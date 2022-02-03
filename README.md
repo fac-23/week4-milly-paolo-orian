@@ -19,7 +19,7 @@ npm install
 ```
 - Populate local db
 ```
-run ./scripts/populate_db
+./scripts/populate_db
 ```
 - Run `psql`
 - Run `\connect <name of your local database>`
