@@ -22,20 +22,24 @@ function get(req, res) {
         <form method="POST" action="/sign-up">
 
         <label for="username">Username<span aria-hidden="true">*</span></label>
-        <div id="usernameRequirements">Username should be max 10 characters long</div>
-        <input name="username" id="username" type="text" aria-label="Enter your username" aria-describedby="usernameRequirements" maxlength="10" required>
+        <div id="usernameRequirements" class="requirements">Username should be max 10 characters long</div>
+        <input name="username" id="username" type="text" aria-label="Enter your username" aria-describedby="usernameRequirements usernameError" maxlength="10" required>
+        <div id="usernameError" class="error"></div>
 
         <label for="email">Email<span aria-hidden="true">*</span></label>
-        <div id="emailRequirements">Email should be a valid email</div>
-        <input name="email" id="email" type="email" aria-label="Enter your email" aria-describedby="emailRequirements" required>
+        <div id="emailRequirements" class="requirements">Email should be a valid email</div>
+        <input name="email" id="email" type="email" aria-label="Enter your email" aria-describedby="emailRequirements emailError" required>
+        <div id="emailError" class="error"></div>
 
         <label for="password">Password<span aria-hidden="true">*</span></label>
-        <div id="passwordRequirements">Password should be at least 8 characters long</div>
-        <input name="password" id="password" type="password" aria-describedby="passwordRequirements" aria-label="Enter your password" minlength="8" required>
+        <div id="passwordRequirements" class="requirements">Password should be at least 8 characters long</div>
+        <input name="password" id="password" type="password" aria-describedby="passwordRequirements passwordError" aria-label="Enter your password" minlength="8" required>
+        <div id="passwordError" class="error"></div>
 
         <button type="submit" aria-label="Click button to Submit">Submit</button>
         </form>
         </div>
+    <script src="validation.js"></script>    
     </body>
     </html>`;
   res.send(html);
