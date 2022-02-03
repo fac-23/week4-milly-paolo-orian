@@ -31,6 +31,8 @@ const profile = require("./routes/profile.js");
 const addPost = require("./routes/addPost.js");
 const newsFeed = require("./routes/newsFeed.js");
 const imgPath = require("./routes/imgPath.js");
+const sendError = require("./routes/404.js");
+
 
 // Home //
 // Display sign up and log in links
@@ -151,6 +153,8 @@ server.get("/post/:id/img", imgPath.get);
 //     res.send(user.img);
 //   });
 // });
+
+server.use(sendError.sendError);
 
 // assign port to deployed or local port
 // eslint-disable-next-line no-undef
