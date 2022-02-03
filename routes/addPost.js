@@ -8,8 +8,6 @@ function post(req, res, next) {
 
   const [caption] = sanitisedInputs;
 
-  //<script>console.log("Hacked!)</script>
-
   const img = req.file;
   console.log("req.file", img);
   const userId = req.session.userObj.id;

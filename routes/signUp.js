@@ -20,12 +20,19 @@ function get(req, res) {
         </div>
     
         <form method="POST" action="/sign-up">
-        <label for="username">Username</label>
-        <input name="username" id="username" type="text" aria-label="Enter your username">
-        <label for="email">Email</label>
-        <input name="email" id="email" type="email" aria-label="Enter your email">
-        <label for="password">Password</label>
-        <input name="password" id="password" type="password" aria-label="Enter your password">
+
+        <label for="username">Username<span aria-hidden="true">*</span></label>
+        <div id="usernameRequirements">Username should be max 10 characters long</div>
+        <input name="username" id="username" type="text" aria-label="Enter your username" aria-describedby="usernameRequirements" maxlength="10" required>
+
+        <label for="email">Email<span aria-hidden="true">*</span></label>
+        <div id="emailRequirements">Email should be a valid email</div>
+        <input name="email" id="email" type="email" aria-label="Enter your email" aria-describedby="emailRequirements" required>
+
+        <label for="password">Password<span aria-hidden="true">*</span></label>
+        <div id="passwordRequirements">Password should be at least 8 characters long</div>
+        <input name="password" id="password" type="password" aria-describedby="passwordRequirements" aria-label="Enter your password" minlength="8" required>
+
         <button type="submit" aria-label="Click button to Submit">Submit</button>
         </form>
         </div>

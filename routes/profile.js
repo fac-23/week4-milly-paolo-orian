@@ -16,18 +16,19 @@ function get(req, res) {
         <div class="links">  
         <a href="/" aria-label="Return to Home Page">Return to Home Page</a>
         
-        <form method="POST" action="/log-out">
+        <form method="POST" action="/log-out" novalidate>
             <button type="submit">Log Out</button>
         </form>
         </div>
     
         <form enctype="multipart/form-data" method="POST" action="/add-post">
 
-        <label for="caption">Caption your pet</label>
-        <input name="caption" id="caption" type="text" aria-label="Caption your Pet">
+        <label for="caption">Caption your pet<span aria-hidden="true">*</span></label>
+        <div id="captionRequirements">Caption should be no more than 140 characters</div>
+        <input name="caption" id="caption" type="text" aria-label="Caption your Pet" aria-describedby="captionRequirements" maxlength="140" required>
 
-        <label for="image">Post Image of your pet</label>
-        <input name="image" id="image" type="file" aria-label="Post image of your pet">
+        <label for="image">Post Image of your pet<span aria-hidden="true">*</span></label>
+        <input name="image" id="image" type="file" aria-label="Post image of your pet" required>
         
         <button type="submit" aria-label="Click button to Submit">Submit</button>
         </form>

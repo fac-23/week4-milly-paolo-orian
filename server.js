@@ -7,7 +7,6 @@ const server = express();
 const bodyParser = express.urlencoded({ extended: false });
 const staticHandler = express.static("public");
 const cookieParser = require("cookie-parser");
-
 // If it finds the session it will attach the userObj data to a new "session" property of the request object
 const getSession = require("./middleware/getSession.js");
 // check user is authenticated
@@ -32,7 +31,6 @@ const addPost = require("./routes/addPost.js");
 const newsFeed = require("./routes/newsFeed.js");
 const imgPath = require("./routes/imgPath.js");
 const sendError = require("./routes/404.js");
-
 
 // Home //
 // Display sign up and log in links
