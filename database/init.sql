@@ -22,18 +22,10 @@ CREATE TABLE sessions (
     data JSON NOT NULL
 );
 
-
-
 INSERT INTO users (username, email, password) VALUES (
     'Grace Hopper',
     'gracehopper@gmail.com',
     'secretpassword'
-);
-
-INSERT INTO posts (caption, img, user_id)  VALUES (
-    'Greatest post ever!!!!',
-    '534543543',
-    1
 );
 
 INSERT INTO sessions (sid, data) VALUES (
