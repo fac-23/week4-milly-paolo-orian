@@ -38,27 +38,27 @@ const sendError = require("./routes/404.js");
 // Display sign up and log in links
 server.get("/", home.get);
 
-// // Sign Up //
-// // Display sign up form
+// Sign Up //
+// Display sign up form
 server.get("/sign-up", signUp.get);
 // // Create user and create session in database
 server.post("/sign-up", signUp.post);
 
-// // Log In //
-// // Display form to log in
+// Log In //
+// Display form to log in
 server.get("/log-in", logIn.get);
 // // Retrieve session and user from database
 server.post("/log-in", logIn.post);
 
-// // Log Out //
-// // Delete cookie and session from database
+// Log Out //
+// Delete cookie and session from database
 server.post("/log-out", logOut.post);
 
-// // Profile //
-// // serve profile page with form
+// Profile //
+// serve profile page with form
 server.get("/profile", checkAuth, profile.get);
 
-//  ADD POST //
+//  Add Post //
 // require multer middleware
 const multer = require("multer");
 // attach file object containing file properties to req object
@@ -66,93 +66,13 @@ const imgUpload = multer().single("image");
 // Process user input and img into database and redirect to newsfeed
 server.post("/add-post", checkAuth, imgUpload, addPost.post);
 
-// NEWS FEED //
+// News Feed //
 // Get all posts from database and display them
 server.get("/news-feed", checkAuth, newsFeed.get);
 
-// IMG GET REQUEST //
+// Img Path //
 // dynamic img endpoint for img tag to to make a request to
 server.get("/post/:id/img", imgPath.get);
-
-// NON MODULARISED CODE //
-// const model = require("./database/model.js");
-
-// server.post(
-//   "/add-post",
-//   checkAuth,
-//   imgUpload.single("image"),
-//   (req, res, next) => {
-//     // get user inputs from req.body
-//     const { caption } = req.body;
-//     const img = req.file;
-//     const userId = req.session.userObj.id;
-//     //  insert caption and img into DB posts table
-//     return model
-//       .createPost(caption, img.buffer, userId)
-//       .then(() => {
-//         res.redirect("/news-feed");
-//       })
-//       .catch((error) => {
-//         console.error(error);
-//         next(error);
-//       });
-//   }
-// );
-
-// server.get("/news-feed", (req, res) => {
-//   const user = req.session;
-//   model.getPosts().then((result) => {
-//     // create array of posts
-//     const posts = result
-//       .map((post) => {
-//         return `<li>
-//       <p>${user.userObj.username}</p>
-//       <p>${post.caption}</p>
-
-//       ${
-//         post.img
-//           ? `<img src="/post/${post.id}/img" alt="${post.caption}" width="64" height="64">`
-//           : ""
-//       }
-//       </li>`;
-//       })
-//       .reverse()
-//       .join("");
-
-//     const html = `
-//     <!DOCTYPE html>
-// <html lang="en">
-//   <head>
-//     <meta charset="UTF-8" />
-//     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-//     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-//     <link rel="stylesheet" href="style.css" />
-//     <title>Pets App News Feed</title>
-//   </head>
-//   <body>
-//     <div class="wrapper">
-//       <h1>Pets App News Feed</h1>
-//       <div class="links">
-//         <a href="/" aria-label="Return to Home Page">Return to Home Page</a>
-//         <a href="/profile" aria-label="Return to Profile">Return to Profile</a>
-//       </div>
-
-//       <ul>
-//     ${posts}
-//       </ul>
-//     </div>
-//   </body>
-// </html>`;
-
-//     res.send(html);
-//   });
-// });
-
-// server.get("/post/:id/img", (req, res) => {
-//   model.getImg(req.params.id).then((user) => {
-//     res.send(user.img);
-//   });
-// });
 
 server.use(sendError.sendError);
 
