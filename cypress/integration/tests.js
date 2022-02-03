@@ -44,7 +44,7 @@ describe("check homepage links", () => {
 // SIGN UP PAGE //
 
 describe("Sign Up pages tests", () => {
-  it("Should be able to sign up a user and set a cookie", () => {
+  it("Can sign up a user and set a cookie", () => {
     cy.visit("/sign-up");
 
     cy.clearCookie("sid");
@@ -67,25 +67,34 @@ describe("Log in page tests", () => {
   it("Can Log in a user", () => {
     cy.visit("/sign-up");
 
+    // clear the "sid" cookie
     cy.clearCookie("sid");
 
     cy.getCookie("sid").should("not.exist");
 
+    // Sign up the user
     cy.get("form").find("input[type='text']").type("Mario");
     cy.get("form").find("input[type='email']").type("mario@nintendo");
     cy.get("form").find("input[type='password']").type("iammario");
 
     cy.get("button").click();
 
+    // Log out the user
     cy.visit("/profile");
     cy.get('button:contains("Log Out")').click();
-    // cy.get("button").contains("Log Out").click();
 
-    // cy.visit("/login");
+    // Log in the user
+    cy.visit("/log-in");
 
-    // cy.get("a");
+    cy.get("form").find("input[type='email']").type("mario@nintendo");
+    cy.get("form").find("input[type='password']").type("iammario");
 
-    // cy.getCookie("sid").should("exist");
+    cy.get("button").click();
+
+    cy.url().should("include", "/profile");
+    cy.get("button").contains("Log Out");
+
+    cy.getCookie("sid").should("exist");
   });
 });
 
@@ -96,10 +105,24 @@ describe("Log in page tests", () => {
 describe("Profile page tests", () => {
   it("Should not display content if not logged in", () => {
     // checks if we get 401: Unauthorized in the body of the response
-    cy.intercept("GET", "/profile", (req, res) => {
-      expect(res.body).to.include("401: Unauthorized");
-    });
 
-    cy.get("h1").contains("You must log in to view this content!");
+    // cy.clearCookie("sid");
+
+    // cy.visit("/profile");
+
+    cy.request({ url: "/profile", failOnStatusCode: false }).should(
+      (response) => {
+        expect(response.status).to.eq(401);
+      }
+    );
+
+    // cy.get("h1").should("contain", "You must log in to view this content!");
+
+    // cy.intercept("GET", "/profile", (req, res) => {
+    //   cy.log("request body", res.status);
+    //   expect(res.body).to.include("401: Unauthorized");
+    // });
+
+    // cy.get("h1").contains("You must log in to view this content!");
   });
 });
