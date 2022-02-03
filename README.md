@@ -1,5 +1,6 @@
 # Petarazzi
-FAC team project for server-side-app week! 
+FAC team project for server-side-app week!   
+[Live site](https://petarazzi.herokuapp.com/) 🔗
 
 ## Install guide
 - Clone the repo
