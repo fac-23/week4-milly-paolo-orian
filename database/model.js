@@ -65,7 +65,7 @@ function createPost(caption, img, id) {
 function getPosts() {
   const SELECT_POSTS = `SELECT * FROM posts`;
   return db.query(SELECT_POSTS).then((result) => {
-    // console.log(result.rows);
+    console.log(result.rows);
     return result.rows;
   });
 }
@@ -78,6 +78,16 @@ function getImg(id) {
   });
 }
 
+// GET USERNAME //
+
+function getUsername(user_id) {
+  const SELECT_USERNAME = `SELECT username FROM users WHERE id=$1`;
+  return db.query(SELECT_USERNAME, [user_id]).then((result) => {
+    console.log("get username", result.rows[0].username);
+    return result.rows[0].username;
+  });
+}
+
 module.exports = {
   createUserDb,
   createSession,
@@ -87,4 +97,5 @@ module.exports = {
   createPost,
   getPosts,
   getImg,
+  getUsername,
 };

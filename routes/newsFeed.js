@@ -1,7 +1,8 @@
 const model = require("../database/model.js");
 
 function get(req, res, next) {
-  const user = req.session;
+  // const user = req.session;
+  // make a variable to access username
   model
     .getPosts()
     .then((result) => {
@@ -9,7 +10,8 @@ function get(req, res, next) {
       const posts = result
         .map((post) => {
           return `<li>
-      <p>${user.userObj.username}</p>
+      <p>${model.getUsername(post.user_id).then((result) => result)}</p>
+      
       <p>${post.caption}</p>
       
       ${
