@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+/* eslint-disable no-undef */
 beforeEach(() => {
   cy.task("resetDb");
 });
@@ -21,7 +22,7 @@ describe("homepage tests", () => {
 
   it("can link to css", () => {
     cy.visit("/");
-    cy.get("h1").should("have.css", "color", "rgb(219, 112, 147)");
+    cy.get("a").should("have.css", "border-radius", "30px");
   });
 });
 
@@ -110,17 +111,30 @@ describe("Profile page tests", () => {
 
     // cy.visit("/profile");
 
-    cy.request({ url: "/profile", failOnStatusCode: false }).should(
-      (response) => {
-        expect(response.status).to.eq(401);
-      }
-    );
+    // cy.request({ url: "/profile", failOnStatusCode: false }).should(
+    //   (response) => {
+    //     expect(response.status).to.eq(401);
+    //   }
+    // );
 
     // cy.get("h1").should("contain", "You must log in to view this content!");
 
     // cy.intercept("GET", "/profile", (req, res) => {
-    //   cy.log("request body", res.status);
+    //   cy.log("request status", res.status);
     //   expect(res.body).to.include("401: Unauthorized");
+    // });
+
+    cy.intercept("GET", "/profile").as("profilePage");
+
+    cy.visit("/profile", { failOnStatusCode: false });
+
+    cy.wait("@profilePage").its("response.statusCode").should("eq", 401);
+
+    // cy.intercept("/profile", (req) => {
+    //   req.continue((res) => {
+    //     expect(res.statusCode).to.be(401);
+    //   });
+    // });
     // });
 
     // cy.get("h1").contains("You must log in to view this content!");

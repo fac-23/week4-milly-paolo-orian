@@ -70,6 +70,14 @@ function getPosts() {
   });
 }
 
+function getUserPosts(id) {
+  const SELECT_USER_POSTS = `SELECT * FROM posts WHERE user_id = $1`;
+  return db.query(SELECT_USER_POSTS, [id]).then((result) => {
+    // console.log(result.rows);
+    return result.rows;
+  });
+}
+
 // GET IMG //
 function getImg(id) {
   return db.query("SELECT img FROM posts WHERE id=$1", [id]).then((result) => {
@@ -87,4 +95,5 @@ module.exports = {
   createPost,
   getPosts,
   getImg,
+  getUserPosts,
 };
