@@ -34,10 +34,12 @@ function get(req, res, next) {
   </head>
   <body>
     <div class="wrapper">
-      <h1>Pets App News Feed</h1>
+    <h1>
+    <img class="logo" src="Petarazzi.jpg" alt="Petarazzi, post your pet pictures">
+    </h1>
       <div class="links">
-        <a href="/" aria-label="Return to Home Page">Return to Home Page</a>
-        <a href="/profile" aria-label="Return to Profile">Return to Profile</a>
+        <a href="/">Return to Home Page</a>
+        <a href="/profile">Return to Profile</a>
       </div>
       
       <ul>

@@ -14,14 +14,14 @@ describe("homepage tests", () => {
 
   it("can find title on home page", () => {
     cy.visit("/");
-    cy.get("h1").contains("Petarazzi");
+    cy.get("h1").contains("img[class='logo']");
   });
 
   // Check if CSS is applied
 
   it("can link to css", () => {
     cy.visit("/");
-    cy.get("h1").should("have.css", "color", "rgb(219, 112, 147)");
+    cy.get("h1").should("have.css", "color", "rgb(110, 10, 44)");
   });
 });
 

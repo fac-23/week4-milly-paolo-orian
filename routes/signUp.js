@@ -14,7 +14,9 @@ function get(req, res) {
     <body>
         
         <div class="wrapper">
-            <h1>Pet App Sign Up</h1>
+        <h1>
+        <img class="logo" src="Petarazzi.jpg" alt="Petarazzi, post your pet pictures">
+        </h1>
         <div class="links">  
         <a href="/" aria-label="Return to Home Page">Return to Home Page</a>
         </div>
@@ -58,7 +60,7 @@ function post(req, res, next) {
   );
 
   const [username, email, password] = sanitisedInputs;
-  
+
   // call auth.createUser to hash password
   // get the user object, create and save the session inside sessions table, returning sid
   // Create cookie with sid
