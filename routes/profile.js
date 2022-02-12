@@ -12,9 +12,11 @@ function get(req, res) {
     <body>
         
         <div class="wrapper">
-            <h1>Hello ${user.userObj.username}</h1>
+          <h1 id="profile"><img class="logo" src="Petarazzi.jpg" alt="Petarazzi, post your pet pictures">
+            Hello ${user.userObj.username}
+          </h1>
         <div class="links">  
-        <a href="/" aria-label="Return to Home Page">Return to Home Page</a>
+        <a href="/">Return to Home Page</a>
         
         <form method="POST" action="/log-out" novalidate>
             <button type="submit">Log Out</button>
@@ -30,7 +32,7 @@ function get(req, res) {
         <label for="image">Post Image of your pet<span aria-hidden="true">*</span></label>
         <input name="image" id="image" type="file" aria-label="Post image of your pet" required>
         
-        <button type="submit" aria-label="Click button to Submit">Submit</button>
+        <button type="submit">Submit</button>
         </form>
         </div>
     </body>

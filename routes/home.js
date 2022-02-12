@@ -10,12 +10,13 @@ function get(req, res) {
     </head>
     <body>
         <div class="wrapper">
-            <h1>Petarazzi</h1>
-            <img class="logo" src="Petarazzi.png" alt="Petarazzi">
+            <h1>
+            <img class="logo" src="Petarazzi.jpg" alt="Petarazzi, post your pet pictures">
+            </h1>
             
         <div class="links">  
-            <a href="/sign-up" aria-label="Click this link to sign up">Sign up</a>
-        <a href="/log-in" aria-label="Click this link to log in">Log in</a>
+            <a href="/sign-up">Sign up</a>
+        <a href="/log-in">Log in</a>
         </div> 
         </div>
         

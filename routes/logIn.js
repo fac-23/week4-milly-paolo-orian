@@ -14,9 +14,11 @@ function get(req, res) {
     <body>
         
         <div class="wrapper">
-            <h1>Pet App Log In</h1>
+        <h1>
+        <img class="logo" src="Petarazzi.jpg" alt="Petarazzi, post your pet pictures">
+        </h1>
         <div class="links">  
-        <a href="/" aria-label="Return to Home Page">Return to Home Page</a>
+        <a href="/">Return to Home Page</a>
         </div>
     
         <form method="POST" action="/log-in">
@@ -29,7 +31,7 @@ function get(req, res) {
         <div id="passwordRequirements">Password should be at least 8 characters long</div>
         <input name="password" id="password" type="password" aria-label="Enter your password" aria-describedby="emailRequirements" minlength="8" required>
 
-        <button type="submit" aria-label="Click button to Submit">Submit</button>
+        <button type="submit">Submit</button>
         </form>
         </div>
     </body>
