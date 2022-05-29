@@ -10,12 +10,12 @@ if (!process.env.DATABASE_URL) {
 // assign db by creating a new pg Pool object
 // the connection string is a string that specifies how to connect to the database. It is set to the db url inside the .env file
 
-const inProduction = process.env.NODE_ENV === "production";
+// const inProduction = process.env.NODE_ENV === "production";
 
 const db = new pg.Pool({
-  ssl: {
-    rejectUnauthorized: !inProduction,
-  },
+  // ssl: {
+  //   rejectUnauthorized: !inProduction,
+  // },
   connectionString: process.env.DATABASE_URL,
 });
 
